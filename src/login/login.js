@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 window.setItemInLocalStorage = (access_token, token_type, expires_in) => {
   window.localStorage.setItem(ACCESS_TOKEN, access_token);
   window.localStorage.setItem(TOKEN_TYPE, token_type);
-  window.localStorage.setItem(EXPIRES_IN, expires_in);
+  window.localStorage.setItem(EXPIRES_IN, Date.now() + expires_in * 1000);
 };
 
 window.addEventListener("load", () => {

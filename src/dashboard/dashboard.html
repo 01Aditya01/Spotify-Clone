@@ -5,8 +5,130 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spotify Player</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script type="module" src="dashboard.js"></script>
   </head>
-  <body>
-    <h1>Welcome to Dashboard</h1>
+  <body class="h-screen bg-black text-primary">
+    <main
+      class="grid-template-areas grid h-full grid-cols-[250px_1fr] grid-rows-[1fr_auto]"
+    >
+      <aside class="sidenav">Sidenav</aside>
+      <article class="content relative overflow-auto bg-transparent">
+        <header
+          class="header sticky top-0 right-0 w-full bg-transparent px-8 py-4"
+        >
+          <nav class="relative flex justify-end">
+            <button
+              id="user-profile-btn"
+              class="flex items-center gap-2 rounded-full p-1 px-2 hover:bg-light-black"
+            >
+              <section>
+                <svg
+                  id="default-image"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-8 w-8 rounded-full bg-gray"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </section>
+              <section class="flex justify-center gap-2">
+                <h3
+                  id="display-name"
+                  class="max-w-[112px] overflow-hidden text-ellipsis"
+                >
+                  Vince
+                </h3>
+                <span>▽</span>
+              </section>
+            </button>
+            <ul
+              id="profile-menu"
+              class="absolute top-12 right-0 hidden w-[200px] rounded-sm bg-light-black p-1"
+            >
+              <li
+                id="logout"
+                class="cursor-pointer rounded-sm px-3 hover:bg-gray"
+              >
+                Logout
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <article
+          id="cover-content"
+          class="absolute top-0 -z-[1] grid h-72 w-full content-center bg-gradient-to-b from-violet-dark to-black-base px-4"
+        >
+          <h1 class="text-6xl">Hello Vince</h1>
+        </article>
+        <section id="page-content" class="mt-52 bg-black-base">
+          <!-- <article class="p-4">
+            <h1 class="mb-4 text-2xl">Featured</h1>
+            <section
+              id="featured-playlist-items"
+              class="features-songs grid grid-cols-auto-fill-cards gap-4"
+            >
+              <section
+              class="flex flex-col justify-evenly gap-2 rounded-md bg-light-black p-4 hover:bg-gray"
+            >
+              <img
+                class="rounded-md"
+                src="https://i.scdn.co/image/ab67706f0000000343bdb41aaf6ff3e85f6a2132"
+                alt=""
+              />
+              <h2 class="text-base">Name</h2>
+              <h3 class="text-sm">Description</h3>
+            </section>
+            <section>
+              <img
+                src="https://i.scdn.co/image/ab67706f0000000343bdb41aaf6ff3e85f6a2132"
+                alt=""
+              />
+              <h2>Name</h2>
+              <h3>Description</h3>
+            </section>
+            </section>
+          </article> -->
+          <header
+            class="sticky top-20 mb-4 border-b border-solid border-secondary bg-black-primary py-2"
+          >
+            <nav>
+              <ul
+                class="m-[auto] grid w-[93%] grid-cols-[50px_2fr_1fr_50px] gap-4 px-4 text-secondary"
+              >
+                <li>#</li>
+                <li>TITLE</li>
+                <li>ALBUM</li>
+                <li>🕒</li>
+              </ul>
+            </nav>
+          </header>
+          <article id="tracks">
+            <section
+              class="track m-[auto] grid h-14 w-[93%] grid-cols-[50px_2fr_1fr_50px] items-center justify-items-start gap-4 rounded-md px-4 text-secondary hover:bg-light-black"
+            >
+              <p>1</p>
+              <section class="flex items-center gap-2">
+                <img class="h-10 w-10" src="" alt="" />
+                <article>
+                  <h2 class="text-base text-primary">song</h2>
+                  <h3 class="text-sm">artists</h3>
+                </article>
+              </section>
+              <p>album</p>
+              <p>1:56</p>
+            </section>
+          </article>
+        </section>
+      </article>
+      <footer class="now-playing">now playing</footer>
+    </main>
   </body>
 </html>
