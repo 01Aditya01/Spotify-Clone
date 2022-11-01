@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    outline: none;
+}
 .grid-template-areas {
     grid-template-areas: "sidenav main"
     "now-playing now-playing";
@@ -16,3 +19,33 @@
 .grid-template-areas .now-playing{
     grid-area: now-playing;
 }
+
+body::-webkit-scrollbar {
+    display: none;
+}
+html {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+.track:hover .track-no, .track.selected .track-no{
+    visibility: hidden;
+}
+.track:hover .play, .track.selected .play{
+    visibility: visible;
+}
+#timeline:hover #progress{
+    background-color: #1DB954;
+}
+
+.song-playing-green{
+    color: theme("colors.green");
+}
+
+#play-span {
+    font-size: 40px;
+}
+#play-span:hover {
+    font-size: 42px;
+}
+

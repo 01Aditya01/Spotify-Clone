@@ -9,6 +9,7 @@ module.exports = {
         "black-primary": "#191414",
         "black-secondary": "#171818",
         "light-black": "#282828",
+        "black-header": "#181818",
         primary: "#ffffff",
         secondary: "#b3b3b3",
         gray: "#535353",
