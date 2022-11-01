@@ -1,0 +1,29 @@
+[33mcommit ea208a1a6c523e4ed24483e4389ce06c7e807885[m[33m ([m[1;36mHEAD -> [m[1;32mdashboard[m[33m)[m
+Author: Aditya <adityadtu01@gmail.com>
+Date:   Tue Nov 1 20:48:13 2022 +0530
+
+    Spotify clone completed.
+
+[33mcommit 39fce3479e1a768dfb24d132852230979b06345e[m
+Author: Aditya <adityadtu01@gmail.com>
+Date:   Thu Oct 27 02:12:31 2022 +0530
+
+    main dashboard done. Playlist section html, css done. Now songs play functionality needs to be added
+
+[33mcommit 22442be64f1d21d1b1af103e86e9b5c8b832b0e0[m[33m ([m[1;32mmaster[m[33m, [m[1;32mlogin[m[33m)[m
+Author: Aditya <adityadtu01@gmail.com>
+Date:   Sat Oct 22 23:01:58 2022 +0530
+
+    changes related to login and env files
+
+[33mcommit 6b5e7cbc0801b777f6cfb6487b719a597fbca3b9[m[33m ([m[1;32mtailwind-setup[m[33m)[m
+Author: Aditya <adityadtu01@gmail.com>
+Date:   Fri Oct 21 16:13:04 2022 +0530
+
+    tailwind setup done.
+
+[33mcommit 72d6863b344375a6f79cd74b5c574aed2ffa7d96[m
+Author: Aditya <adityadtu01@gmail.com>
+Date:   Thu Oct 20 22:53:32 2022 +0530
+
+    Initial setup
