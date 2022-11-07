@@ -1,6 +1,3 @@
-
-const APP_URL = import.meta.env.VITE_APP_URL;
-
 export const ENDPOINT = {
   userInfo: "me",
   featuredPlaylist: "browse/featured-playlists?limit=5",
@@ -9,7 +6,6 @@ export const ENDPOINT = {
   recentlyPlayed: "me/player/recently-played",
   userPlaylists: "me/playlists",
 };
-
 
 export const SECTIONTYPE = {
   DASHBOARD: "DASHBOARD",

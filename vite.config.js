@@ -1,10 +1,12 @@
 import { defineConfig, loadEnv } from "vite";
-import { resolve } from "path";
+import path, { resolve } from "path";
 
 export default defineConfig(({ command, mode }) => {
   // Load env file based on `mode` in the current working directory.
   // Set the third parameter to '' to load all env regardless of the `VITE_` prefix.
   const env = loadEnv(mode, process.cwd(), "");
+  console.log(__dirname);
+  console.log(process.cwd());
   return {
     // vite config
     define: {
@@ -12,7 +14,7 @@ export default defineConfig(({ command, mode }) => {
     },
     root: "src",
     build: {
-      outDir: "../dist",
+      outDir: path.join(__dirname, "dist"),
       rollupOptions: {
         input: {
           main: resolve(__dirname, "src/index.html"),
