@@ -1,6 +1,6 @@
 import { list } from "postcss";
 import { fetchRequest } from "../api";
-import { ENDPOINT, logout, SECTIONTYPE } from "../common";
+import { ENDPOINT, SECTIONTYPE } from "../common";
 
 let userName;
 const audio = new Audio();
@@ -24,19 +24,6 @@ const loadUserProfile = async () => {
   const profileButton = document.querySelector("#user-profile-btn");
   const displayNameElement = document.querySelector("#display-name");
 
-  const onProfileClick = (event) => {
-    event.stopPropagation();
-    const profileMenu = document.querySelector("#profile-menu");
-    const dropDownButton = document.querySelector("#drop-down-button");
-    profileMenu.classList.toggle("hidden");
-    if (!profileMenu.classList.contains("hidden")) {
-      dropDownButton.textContent = "arrow_drop_up";
-      profileMenu.querySelector("li#logout").onclick = logout;
-    } else {
-      dropDownButton.textContent = "arrow_drop_down";
-    }
-  };
-
   const { display_name: displayName, images } = await fetchRequest(
     ENDPOINT.userInfo
   );
@@ -47,7 +34,6 @@ const loadUserProfile = async () => {
     defaultImage.classList.remove("hidden");
   }
 
-  profileButton.addEventListener("click", onProfileClick);
   displayNameElement.textContent = displayName;
 };
 
@@ -220,7 +206,9 @@ const onPlayTrack = ({
   name,
   id,
 }) => {
-  document.querySelector("#now-playing-image").src = image.url;
+  const footerImage = document.querySelector("#now-playing-image");
+  footerImage.src = image.url;
+  footerImage.classList.remove("hidden");
   document.querySelector("#now-playing-song").textContent = name;
   document.querySelector("#now-playing-artists").textContent = artistNames;
 
@@ -393,6 +381,7 @@ const getTrackInfo = (songTrack) => {
 };
 
 const loadLastPlayedSong = async () => {
+  console.log("last song");
   const recentlyPlayed = await fetchRequest(ENDPOINT.recentlyPlayed);
   songList = recentlyPlayed.items.filter((item) => item.track.preview_url);
   currentTrackIndex = -1;
@@ -401,22 +390,25 @@ const loadLastPlayedSong = async () => {
   const lastPlayedSong = recentlyPlayed.items.find(
     (element) => element.track.preview_url
   );
-  const {
-    id,
-    artists,
-    name,
-    album,
-    duration_ms: duration,
-    preview_url: previewURL,
-  } = lastPlayedSong.track;
-  let image = album.images.find((img) => img.height === 64);
-  let artistNames = Array.from(artists, (element) => element.name).join(", ");
-  onPlayTrack({ image, artistNames, previewURL, duration, name, id: false });
-  playButton.id = id;
+  if (lastPlayedSong) {
+    const {
+      id,
+      artists,
+      name,
+      album,
+      duration_ms: duration,
+      preview_url: previewURL,
+    } = lastPlayedSong.track;
+    let image = album.images.find((img) => img.height === 64);
+    let artistNames = Array.from(artists, (element) => element.name).join(", ");
+    onPlayTrack({ image, artistNames, previewURL, duration, name, id: false });
+    playButton.id = id;
+  }
   playButton.addEventListener("click", () => {
     onPlayButtonClick(playButton.id);
   });
   nextButton.addEventListener("click", () => {
+    console.log("next button");
     if (currentTrackIndex < numberOfSongs - 1) {
       const trackInfo = getTrackInfo(songList[currentTrackIndex + 1]);
       onPlayTrack(trackInfo);

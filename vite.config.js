@@ -17,7 +17,6 @@ export default defineConfig(({ command, mode }) => {
         input: {
           main: resolve(__dirname, "src/index.html"),
           dashboard: resolve(__dirname, "src/dashboard/dashboard.html"),
-          login: resolve(__dirname, "src/login/login.html"),
         },
       },
     },

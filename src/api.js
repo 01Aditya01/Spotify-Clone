@@ -1,17 +1,25 @@
 import { formatWithCursor } from "prettier";
-import { ACCESS_TOKEN, EXPIRES_IN, logout, TOKEN_TYPE } from "./common";
 
 const BASE_API_URL = import.meta.env.VITE_API_BASE_URL;
+let accessToken;
+let expiresIn;
+let tokenType;
 
-const getAccessToken = () => {
-  const accessToken = localStorage.getItem(ACCESS_TOKEN);
-  const expiresIn = localStorage.getItem(EXPIRES_IN);
-  const tokenType = localStorage.getItem(TOKEN_TYPE);
-  if (Date.now() < expiresIn) {
-    return { accessToken, tokenType };
-  } else {
-    logout();
+const fetchAccessToken = async () => {
+  const response = await fetch(
+    "https://spotify-apifetch.netlify.app/.netlify/functions/spotify"
+  );
+  return response.json();
+};
+
+const getAccessToken = async () => {
+  if (!accessToken || Date.now() > expiresIn) {
+    const { access_token, token_type, expires_in } = await fetchAccessToken();
+    accessToken = access_token;
+    tokenType = token_type;
+    expiresIn = Date.now() + expires_in * 1000;
   }
+  return { accessToken, tokenType };
 };
 
 const createAPIConfig = ({ accessToken, tokenType }, method = "GET") => {
@@ -25,6 +33,6 @@ const createAPIConfig = ({ accessToken, tokenType }, method = "GET") => {
 
 export const fetchRequest = async (endpoint) => {
   const url = `${BASE_API_URL}/${endpoint}`;
-  const result = await fetch(url, createAPIConfig(getAccessToken()));
+  const result = await fetch(url, createAPIConfig(await getAccessToken()));
   return result.json();
 };
