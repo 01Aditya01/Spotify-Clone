@@ -21,7 +21,6 @@ let numberOfSongs;
 
 const loadUserProfile = async () => {
   const defaultImage = document.querySelector("#default-image");
-  const profileButton = document.querySelector("#user-profile-btn");
   const displayNameElement = document.querySelector("#display-name");
 
   const { display_name: displayName, images } = await fetchRequest(
